@@ -582,6 +582,11 @@ body {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 480px) {
+    body {
+        background-attachment: scroll;
+        background-size: cover;
+    }
+
     .hero-title {
         font-size: 2.2rem;
     }
