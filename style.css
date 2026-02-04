@@ -1,0 +1,600 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: linear-gradient(135deg, #fff5f7 0%, #fffaf2 100%);
+    overflow-x: hidden;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* ============ LOADING INDICATOR ============ */
+.loading-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fff5f7 0%, #fffaf2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+}
+
+.loading-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 169, 196, 0.2);
+    border-top-color: #ff69b4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-indicator p {
+    font-size: 1rem;
+    color: #8b6f7f;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* ============ SCROLL PROGRESS BAR ============ */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #ff69b4 0%, #ff8fab 100%);
+    width: 0%;
+    z-index: 9998;
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
+}
+
+/* ============ MEMORIES COUNTER ============ */
+.memories-counter {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    color: #8b6f7f;
+    font-weight: 500;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.1);
+    border: 1px solid rgba(255, 169, 196, 0.2);
+    z-index: 999;
+    backdrop-filter: blur(10px);
+    letter-spacing: 0.3px;
+}
+
+#flippedCount {
+    color: #ff69b4;
+    font-weight: 700;
+}
+
+/* ============ SPARKLE EFFECT ============ */
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.5rem;
+    z-index: 500;
+}
+
+/* ============ HERO SECTION ============ */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #fff5f7 0%, #ffeef5 50%, #fffaf2 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 25% 25%, rgba(255, 192, 203, 0.1), transparent 50%);
+    animation: softFloat 15s ease-in-out infinite;
+}
+
+@keyframes softFloat {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(20px, -20px);
+    }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: fadeInHero 1.2s ease-out forwards;
+}
+
+@keyframes fadeInHero {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ff69b4 0%, #ff8fab 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+}
+
+/* ============ TRIGGER SCROLL SECTION ============ */
+.trigger-scroll {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, #fffaf2 0%, #fff5f7 100%);
+}
+
+.trigger-text {
+    opacity: 0;
+    transform: translateY(30px) rotateZ(-3deg);
+    animation: triggerRoll 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 0.3s;
+    text-align: center;
+}
+
+@keyframes triggerRoll {
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateZ(0deg);
+    }
+}
+
+.trigger-text p {
+    font-size: 1.3rem;
+    color: #8b6f7f;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+/* ============ TIMELINE SECTION ============ */
+.timeline {
+    padding: 1rem;
+    background: linear-gradient(180deg, #fff5f7 0%, #fffaf2 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-moment {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    opacity: 0;
+    width: 100%;
+}
+
+.timeline-moment.in-view {
+    animation: fadeInSimple 0.6s ease-out forwards;
+}
+
+.timeline-moment.out-view {
+    animation: fadeOutSimple 0.6s ease-out forwards;
+}
+
+@keyframes fadeInSimple {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutSimple {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* ============ FLIP CARD ANIMATION ============ */
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    max-width: 360px;
+    height: 420px;
+    perspective: 1000px;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 24px;
+    box-shadow: 0 15px 45px rgba(255, 105, 180, 0.15);
+    transition: box-shadow 0.3s ease;
+}
+
+.flip-card-front {
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    border: 1px solid rgba(255, 169, 196, 0.2);
+}
+
+.flip-card-front:hover {
+    box-shadow: 0 20px 55px rgba(255, 105, 180, 0.25);
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, #ffb3d9 0%, #ffe8f0 50%, #fff0f6 100%);
+    color: #2c3e50;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 169, 196, 0.3);
+}
+
+.flip-card-back p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.8;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #5c3d52;
+}
+
+/* ============ MIDWAY SPECIAL CARD ============ */
+.midway-card-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    opacity: 0;
+}
+
+.midway-card-wrapper.in-view {
+    animation: fadeInSimple 0.6s ease-out forwards;
+}
+
+.midway-card-wrapper.out-view {
+    animation: fadeOutSimple 0.6s ease-out forwards;
+}
+
+.midway-card {
+    background: linear-gradient(135deg, rgba(255, 192, 203, 0.15) 0%, rgba(255, 240, 245, 0.2) 100%);
+    border: 2px solid rgba(255, 169, 196, 0.3);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    max-width: 350px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.midway-emoji {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.midway-text {
+    font-size: 1.2rem;
+    color: #6b5b7b;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
+/* ============ CLOSING SECTION ============ */
+.closing {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(180deg, #fffaf2 0%, #fff5f7 100%);
+}
+
+.closing-content {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUp 1.2s ease-out forwards;
+    animation-delay: 0.5s;
+    text-align: center;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.closing-text {
+    font-size: 1.5rem;
+    color: #7b6b8f;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
+/* ============ FINAL INTERACTION ============ */
+.final-interaction {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, #fff5f7 0%, #fffaf2 100%);
+}
+
+.love-button {
+    font-size: 1.3rem;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff69b4 0%, #ff8fab 100%);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.love-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.4);
+}
+
+.love-button:active {
+    transform: translateY(-1px);
+}
+
+.message-reveal {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    max-width: 320px;
+    text-align: center;
+}
+
+.message-reveal.show {
+    animation: revealMessage 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes revealMessage {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.reveal-text {
+    font-size: 1.2rem;
+    color: #8b6f7f;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .trigger-text p {
+        font-size: 1.15rem;
+    }
+
+    .moment-card {
+        max-width: 100%;
+    }
+
+    .moment-image {
+        height: 300px;
+    }
+
+    .midway-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .closing-text {
+        font-size: 1.3rem;
+    }
+
+    .love-button {
+        font-size: 1.1rem;
+        padding: 0.9rem 1.8rem;
+    }
+}
+
+/* ============ LOVE HEARTS ANIMATION ============ */
+.love-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(calc(sin(45deg) * 100px)) scale(0);
+        opacity: 0;
+    }
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+    }
+}
+
+/* ============ SCROLL INDICATOR ============ */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    color: #ff69b4;
+    animation: bounceDown 2s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+@keyframes bounceDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(12px);
+    }
+}
+
+/* ============ HERO FLOATING HEARTS ============ */
+.hero-hearts {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.hero-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.4;
+    animation: floatHeart 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes floatHeart {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    25% {
+        opacity: 0.6;
+    }
+    75% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+}
+
+/* ============ UTILITY ============ */
+.hidden {
+    display: none;
+}

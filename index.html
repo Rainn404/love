@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerita Kita ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div id="progressBar" class="progress-bar"></div>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Memuat Cinta kita...</p>
+    </div>
+
+    <!-- Memories Counter -->
+    <div id="memoriesCounter" class="memories-counter">
+        <span id="flippedCount">0</span> / 28 Memories 💕
+    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Cinta Kita ❤️</h1>
+            <p class="hero-subtitle">Dari pertama ketemu, sampai hari ini</p>
+            <div class="scroll-indicator">
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-hearts" id="heroHearts"></div>
+    </section>
+
+    <!-- Trigger Scroll Section -->
+    <section class="trigger-scroll">
+        <div class="trigger-text">
+            <p>Scroll pelan sambil di klik fotonya satu satu ya… ada yang mau aku sampein 🤍</p>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline">
+        <!-- Moment 1: Genggaman Tangan Pertama -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/genggamantanganpertama.jpg" alt="Genggaman Tangan Pertama">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Saat jari-jarimu genggam tanganku untuk pertama kali, hatiku tahu ini takdir.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 2: Makanmalam Pertama -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/makanmalam pertama.jpg" alt="Makan Malam Pertama">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Dinner pertama kita, momen yang tidak akan pernah aku lupakan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 3: Jalan -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/jalan.jpg" alt="Jalan">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Mau kemana aja, selama bersamamu, aku udah cukup bahagia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 4: Taman Sore -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/tamansore.jpg" alt="Taman Sore">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Sore itu indah bukan karena matahari, tapi karena dirimu di sebelahku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 5: Taman Sore 2 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/tamansore2.jpg" alt="Taman Sore 2">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Setiap sore bersama jadi momen paling aku tunggu-tunggu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 6: Malam -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/malam.jpg" alt="Malam">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Malam bersamamu lebih cerah dari beribu-ribu bintang.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 7: Malam 2 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/malam2.jpg" alt="Malam 2">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Di tengah kegelapan malam, cahaya dirimu adalah yang paling aku cari.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 8: Malam Hujan -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/malamhujan.jpg" alt="Malam Hujan">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Hujan itu indah kalau ada dirimu yang narik payung bersama aku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 9: Snack -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/snack.jpg" alt="Snack">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Hal kecil seperti makan snack jadi hal terbesar kalau sama kamu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 10: Ber2 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/ber2.jpg" alt="Ber2">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Dua kita, cukup untuk mengatasi semua hal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 11: Ber2 2 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/ber2_2.jpg" alt="Ber2 2">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Bersama dirimu adalah versi terbaik dari diriku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 12: Berduq -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/berduq.jpg" alt="Berduq">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Aku dan kamu, tidak ada yang kurang.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 13: Kita -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/kita.jpg" alt="Kita">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Cerita kita adalah karya seni yang paling aku bangga.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Midway Special Card -->
+        <div class="midway-card-wrapper">
+            <div class="midway-card">
+                <div class="midway-emoji">💭</div>
+                <p class="midway-text">Di antara semua hari, aku selalu bersyukur ketemu kamu.</p>
+            </div>
+        </div>
+
+        <!-- Moment 14: Malam di Taman -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/malamditaman.jpg" alt="Malam di Taman">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Malam di taman jadi lebih indah dengan kehadiranmu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 15: Eskrim di Taman -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/eskrimditaman.jpg" alt="Eskrim di Taman">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Es krim di taman bareng kamu, manisnya lebih dari rasa di mulut.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 16: Manis -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/manis.jpg" alt="Manis">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Kamu lebih manis dari apapun yang pernah aku rasakan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 17: Makan Nasi Goreng -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/makannasigoreng.jpg" alt="Makan Nasi Goreng">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Apapun yang kita makan jadi lebih nikmat kalau bareng kamu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 18: IMG_3813 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_3813.jpg" alt="Moment 18">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Pulang jadi terasa nyaman kalau ada dirimu di sana.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 18: IMG_3823 (1) -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_3823 (1).jpg" alt="Moment 18">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Kamu adalah cerita favorit yang selalu ingin aku ulangi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 19: IMG_3834 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_3834.jpg" alt="Moment 19">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Setia di sisi dirimu adalah pilihan terbaik hatiku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 20: IMG_3883 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_3883.jpg" alt="Moment 20">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Hidupku bermakna karena ada dirimu di dalamnya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 21: IMG_3935 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_3935.jpg" alt="Moment 21">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Terima kasih sudah menjadi alasan aku terus maju.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 22: IMG_3992 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_3992.jpg" alt="Moment 22">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Cintaku tumbuh lebih dalam setiap hari yang berlalu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 23: IMG_4011 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_4011.jpg" alt="Moment 23">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Hari-hari biasaku jadi istimewa hanya gara-gara dirimu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 25: IMG_4031 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_4031.jpg" alt="Moment 25">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Kebahagiaan sejati adalah melihat senyumanmu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 25: IMG_4246 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_4246.jpg" alt="Moment 25">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Selamanya bersamamu adalah mimpi paling indah aku.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 26: IMG_4610 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_4610.jpg" alt="Moment 26">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Setiap hari aku milih kamu, terus-terusan, sampai selamanya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 27: IMG_4630 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_4630.jpg" alt="Moment 27">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Hidup bersamamu adalah berkah paling besar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moment 28: IMG_4684 -->
+        <div class="timeline-moment">
+            <div class="moment-card flip-card" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="img/IMG_4684.jpg" alt="Moment 28">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Sampai di sini, aku masih penuh dengan rasa cintaku untukmu.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="closing">
+        <div class="closing-content">
+            <p class="closing-text">Dan semoga cerita kita nggak berhenti di sini.</p>
+        </div>
+    </section>
+
+    <!-- Final Interaction -->
+    <section class="final-interaction">
+        <button class="love-button" onclick="revealMessage()">I love you 🤍</button>
+        <div class="message-reveal" id="messageReveal">
+            <p class="reveal-text">Kamu adalah alasan terbaik untuk tersenyum setiap hari.</p>
+        </div>
+    </section>
+
+    <!-- Spacing -->
+    <div style="height: 100px;"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
