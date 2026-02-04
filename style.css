@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +34,7 @@ body::before {
         linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 242, 0.9) 100%),
         url('./img/backgroud.jpg');
     background-size: 120%; /* Zoom 20% untuk fill ruang kosong di mobile */
-    background-position: center;
+    background-position: center bottom;
     background-repeat: no-repeat;
     z-index: 0;
     pointer-events: none;
@@ -441,12 +443,14 @@ body > * {
 }
 
 .flip-card-back p {
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.8;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.9;
     text-align: center;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.2px;
     color: #5c3d52;
+    font-style: italic;
 }
 
 /* ============ MIDWAY SPECIAL CARD ============ */
