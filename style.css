@@ -6,6 +6,7 @@
 
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
 body {
@@ -15,21 +16,22 @@ body {
     overflow-x: hidden;
     color: #2c3e50;
     line-height: 1.6;
+    min-height: 100%;
 }
 
-/* ============ FIXED BACKGROUND PSEUDO-ELEMENT ============ */
+/* ============ FIXED FULLSCREEN BACKGROUND ============ */
+/* Pseudo-element dengan position fixed + 100vw/100svh untuk mobile-safe */
 body::before {
     content: '';
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100svh; /* Small viewport height - exclude address bar on mobile */
     background-image: 
         linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 242, 0.9) 100%),
         url('./img/backgroud.jpg');
-    background-attachment: fixed;
-    background-size: cover;
+    background-size: 100% 100%; /* Prevent zoom - scale to fit exactly */
     background-position: center;
     background-repeat: no-repeat;
     z-index: 0;
@@ -604,13 +606,6 @@ body > * {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 480px) {
-    /* Keep background fixed on mobile too with pseudo-element solution */
-    body::before {
-        background-attachment: fixed;
-        background-size: cover;
-        background-position: center bottom;
-    }
-
     .hero {
         height: 100dvh; /* Use dynamic viewport height on mobile */
     }
