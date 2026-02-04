@@ -10,7 +10,13 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(135deg, #fff5f7 0%, #fffaf2 100%);
+    background-image: 
+        linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 242, 0.9) 100%),
+        url('./img/backgroud.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     overflow-x: hidden;
     color: #2c3e50;
     line-height: 1.6;
@@ -224,7 +230,6 @@ body {
 /* ============ TIMELINE SECTION ============ */
 .timeline {
     padding: 1rem;
-    background: linear-gradient(180deg, #fff5f7 0%, #fffaf2 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -392,6 +397,12 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+    filter: brightness(0.92) contrast(0.85) saturate(1.2) sepia(0.15) hue-rotate(-5deg);
+    transition: filter 0.3s ease;
+}
+
+.flip-card:hover .flip-card-front img {
+    filter: brightness(1.0) contrast(0.9) saturate(1.3) sepia(0.2) hue-rotate(-5deg);
 }
 
 .flip-card-back {
@@ -476,7 +487,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: linear-gradient(180deg, #fffaf2 0%, #fff5f7 100%);
+  
 }
 
 .closing-content {
@@ -510,7 +521,6 @@ body {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #fff5f7 0%, #fffaf2 100%);
 }
 
 .love-button {
@@ -642,7 +652,7 @@ body {
 /* ============ SCROLL INDICATOR ============ */
 .scroll-indicator {
     position: absolute;
-    bottom: 2rem;
+    bottom: -5rem;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
