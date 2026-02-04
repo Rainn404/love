@@ -10,6 +10,21 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #fff5f7;
+    position: relative;
+    overflow-x: hidden;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* ============ FIXED BACKGROUND PSEUDO-ELEMENT ============ */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: 
         linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 242, 0.9) 100%),
         url('./img/backgroud.jpg');
@@ -17,9 +32,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    overflow-x: hidden;
-    color: #2c3e50;
-    line-height: 1.6;
+    z-index: 0;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Ensure content stays above background */
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* ============ LOADING INDICATOR ============ */
@@ -133,6 +154,7 @@ body {
 /* ============ HERO SECTION ============ */
 .hero {
     height: 100vh;
+    height: 100dvh; /* Dynamic viewport height untuk mobile */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -582,10 +604,15 @@ body {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 480px) {
-    body {
+    /* Keep background fixed on mobile too with pseudo-element solution */
+    body::before {
         background-attachment: fixed;
         background-size: cover;
         background-position: center bottom;
+    }
+
+    .hero {
+        height: 100dvh; /* Use dynamic viewport height on mobile */
     }
 
     .hero-title {
