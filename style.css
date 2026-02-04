@@ -104,6 +104,26 @@ body {
     z-index: 500;
 }
 
+/* ============ FLOATING PETALS & DECORATIONS ============ */
+.floating-petal {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.8rem;
+    z-index: 100;
+}
+
+.floating-petal.style1 {
+    animation: floatingPetal 8s ease-in infinite;
+}
+
+.floating-petal.style2 {
+    animation: floatingPetal 10s ease-in infinite, floatingSwirl 4s ease-in-out infinite;
+}
+
+.floating-petal.style3 {
+    animation: floatingPetal 12s ease-in infinite;
+}
+
 /* ============ HERO SECTION ============ */
 .hero {
     height: 100vh;
@@ -248,6 +268,67 @@ body {
 }
 
 /* ============ FLIP CARD ANIMATION ============ */
+@keyframes pulseGlow {
+    0%, 100% {
+        box-shadow: 0 15px 45px rgba(255, 105, 180, 0.15);
+    }
+    50% {
+        box-shadow: 0 20px 65px rgba(255, 105, 180, 0.35), 
+                    inset 0 0 20px rgba(255, 105, 180, 0.1);
+    }
+}
+
+@keyframes shakeEffect {
+    0%, 100% { transform: translateX(0) scale(1); }
+    25% { transform: translateX(-3px) scale(1.02); }
+    50% { transform: translateX(3px) scale(1.02); }
+    75% { transform: translateX(-3px) scale(1.02); }
+}
+
+@keyframes floatingPetal {
+    0% {
+        opacity: 0;
+        transform: translateY(0) translateX(0) rotate(0deg) scale(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) translateX(100px) rotate(360deg) scale(1);
+    }
+}
+
+@keyframes floatingSwirl {
+    0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+    25% { transform: translateX(20px) translateY(-20px) rotate(90deg); }
+    50% { transform: translateX(0) translateY(-40px) rotate(180deg); }
+    75% { transform: translateX(-20px) translateY(-20px) rotate(270deg); }
+}
+
+@keyframes fadeInBounce {
+    from {
+        opacity: 0;
+        transform: scale(0.6) rotateZ(-5deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+    }
+}
+
+@keyframes emojiPulse {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
 .flip-card {
     background-color: transparent;
     width: 100%;
@@ -278,8 +359,10 @@ body {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 24px;
-    box-shadow: 0 15px 45px rgba(255, 105, 180, 0.15);
-    transition: box-shadow 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2),
+                0 15px 45px rgba(255, 105, 180, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .flip-card-front {
@@ -293,6 +376,17 @@ body {
     box-shadow: 0 20px 55px rgba(255, 105, 180, 0.25);
 }
 
+.flip-card:hover .flip-card-front {
+    transform: scale(1.05);
+    box-shadow: 0 20px 65px rgba(255, 105, 180, 0.35),
+                0 0 30px rgba(255, 105, 180, 0.2);
+    animation: pulseGlow 1.5s ease-in-out infinite;
+}
+
+.flip-card.flipped .flip-card-front {
+    animation: shakeEffect 0.4s ease-in-out;
+}
+
 .flip-card-front img {
     width: 100%;
     height: 100%;
@@ -301,14 +395,14 @@ body {
 }
 
 .flip-card-back {
-    background: linear-gradient(135deg, #ffb3d9 0%, #ffe8f0 50%, #fff0f6 100%);
+    background: linear-gradient(135deg, #ff6ec7 0%, #ffb3d9 25%, #ffe8f0 60%, #fff0f6 100%);
     color: #2c3e50;
     transform: rotateY(180deg);
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2.5rem;
-    border: 1px solid rgba(255, 169, 196, 0.3);
+    border: 1px solid rgba(255, 169, 196, 0.4);
 }
 
 .flip-card-back p {
@@ -331,7 +425,7 @@ body {
 }
 
 .midway-card-wrapper.in-view {
-    animation: fadeInSimple 0.6s ease-out forwards;
+    animation: fadeInBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .midway-card-wrapper.out-view {
@@ -339,24 +433,37 @@ body {
 }
 
 .midway-card {
-    background: linear-gradient(135deg, rgba(255, 192, 203, 0.15) 0%, rgba(255, 240, 245, 0.2) 100%);
-    border: 2px solid rgba(255, 169, 196, 0.3);
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.15) 0%, rgba(255, 169, 196, 0.12) 50%, rgba(255, 240, 245, 0.2) 100%);
+    border: 2px solid rgba(255, 105, 180, 0.4);
     border-radius: 20px;
     padding: 3rem 2rem;
     max-width: 350px;
     text-align: center;
     backdrop-filter: blur(10px);
+    box-shadow: 0 15px 50px rgba(255, 105, 180, 0.15),
+                0 0 30px rgba(255, 105, 180, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.midway-card:hover {
+    transform: scale(1.03) rotateZ(1deg);
+    box-shadow: 0 20px 60px rgba(255, 105, 180, 0.25),
+                0 0 40px rgba(255, 105, 180, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .midway-emoji {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
     display: block;
+    animation: emojiPulse 1.5s ease-in-out infinite;
 }
 
 .midway-text {
     font-size: 1.2rem;
-    color: #6b5b7b;
+    color: #5c3d52;
     font-weight: 400;
     line-height: 1.8;
     letter-spacing: 0.3px;

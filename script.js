@@ -31,18 +31,19 @@ function flipCard(element) {
 // ============ SPARKLE EFFECT ============
 
 function createSparkles(element) {
-    const sparkles = ['✨', '💫', '⭐', '🌟', '💥'];
+    const sparkles = ['✨', '💫', '⭐', '🌟', '💥', '🎆', '💕', '✨'];
     const rect = element.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
     
-    for (let i = 0; i < 8; i++) {
+    // Buat lebih banyak sparkles untuk efek lebih rame
+    for (let i = 0; i < 16; i++) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
         sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
         
-        const angle = (i / 8) * Math.PI * 2;
-        const distance = 60;
+        const angle = (i / 16) * Math.PI * 2;
+        const distance = 80 + Math.random() * 40;
         const tx = Math.cos(angle) * distance;
         const ty = Math.sin(angle) * distance;
         
@@ -50,15 +51,85 @@ function createSparkles(element) {
         sparkle.style.top = centerY + 'px';
         sparkle.style.setProperty('--tx', tx + 'px');
         sparkle.style.setProperty('--ty', ty + 'px');
+        sparkle.style.fontSize = (1.2 + Math.random() * 0.8) + 'rem';
+        sparkle.style.opacity = '0.8';
         
         document.body.appendChild(sparkle);
         
-        sparkle.style.animation = `sparkleAnimation 0.8s ease-out forwards`;
+        sparkle.style.animation = `sparkleAnimation 1s ease-out forwards`;
         
         setTimeout(() => {
             sparkle.remove();
-        }, 800);
+        }, 1000);
     }
+}
+
+// ============ SPECIAL SPARKLES FOR MIDWAY CARD ============
+
+function createSpecialSparkles(element) {
+    // Create more sparkles dengan special emojis untuk midway card
+    const specialSparkles = ['💕', '✨', '🎆', '💖', '✨', '🌟', '💝', '✨', '💗'];
+    const rect = element.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    // Create 24 sparkles instead of 16 untuk efek lebih spektakuler
+    for (let i = 0; i < 24; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.textContent = specialSparkles[Math.floor(Math.random() * specialSparkles.length)];
+        
+        const angle = (i / 24) * Math.PI * 2;
+        const distance = 100 + Math.random() * 60;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        
+        sparkle.style.left = centerX + 'px';
+        sparkle.style.top = centerY + 'px';
+        sparkle.style.setProperty('--tx', tx + 'px');
+        sparkle.style.setProperty('--ty', ty + 'px');
+        sparkle.style.fontSize = (1.5 + Math.random() * 1) + 'rem';
+        sparkle.style.opacity = '0.9';
+        
+        document.body.appendChild(sparkle);
+        
+        sparkle.style.animation = `sparkleAnimation 1.2s ease-out forwards`;
+        
+        setTimeout(() => {
+            sparkle.remove();
+        }, 1200);
+    }
+}
+
+// ============ FLOATING PETALS DECORATION ============
+
+function createFloatingPetals() {
+    const petals = ['🌸', '🌹', '💕', '✨', '💖', '💝', '🎀', '💗'];
+    const styles = ['style1', 'style2', 'style3'];
+    
+    // Create petals continuously
+    const createPetal = () => {
+        if (document.querySelectorAll('.floating-petal').length < 20) {
+            const petal = document.createElement('div');
+            petal.className = `floating-petal ${styles[Math.floor(Math.random() * styles.length)]}`;
+            petal.textContent = petals[Math.floor(Math.random() * petals.length)];
+            
+            const startX = Math.random() * window.innerWidth;
+            petal.style.left = startX + 'px';
+            petal.style.top = '-50px';
+            petal.style.opacity = '0.6';
+            
+            document.body.appendChild(petal);
+            
+            // Remove setelah animation selesai
+            setTimeout(() => {
+                petal.remove();
+            }, 12000);
+        }
+    };
+    
+    // Buat petal every 1-2 seconds
+    setInterval(createPetal, 1500);
 }
 
 // ============ LOVE HEARTS ANIMATION ============
@@ -145,6 +216,11 @@ function observeScrollRoll() {
                 // Element is in view - add in-view class
                 entry.target.classList.remove('out-view');
                 entry.target.classList.add('in-view');
+                
+                // Special effect untuk midway card
+                if (entry.target.classList.contains('midway-card-wrapper')) {
+                    createSpecialSparkles(entry.target);
+                }
             } else {
                 // Element is out of view
                 const rect = entry.target.getBoundingClientRect();
@@ -250,6 +326,9 @@ function preloadImages() {
 
 // Preload on page load
 window.addEventListener('load', preloadImages);
+
+// Start floating petals animation
+createFloatingPetals();
 
 // ============ TOUCH OPTIMIZATION ============
 
