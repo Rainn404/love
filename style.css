@@ -29,12 +29,13 @@ body::before {
     top: 0;
     left: 0;
     width: 100vw;
+    height: 100vh;
     height: 100svh; /* Small viewport height - exclude address bar on mobile */
     background-image: 
         linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 242, 0.9) 100%),
         url('./img/backgroud.jpg');
-     background-size: 100% 100%; /* Zoom 20% untuk fill ruang kosong di mobile */
-    background-position: center;
+    background-size: cover; /* Cover untuk fill penuh tanpa distort */
+    background-position: center bottom; /* Align ke bawah */
     background-repeat: no-repeat;
     z-index: 0;
     pointer-events: none;
@@ -610,6 +611,12 @@ body > * {
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 480px) {
+    /* Force background to full height on mobile */
+    body::before {
+        height: 100vh !important;
+        background-size: cover;
+    }
+
     .hero {
         height: 100dvh; /* Use dynamic viewport height on mobile */
     }
