@@ -34,7 +34,7 @@ body::before {
     background-image: 
         linear-gradient(135deg, rgba(255, 245, 247, 0.9) 0%, rgba(255, 250, 242, 0.9) 100%),
         url('./img/backgroud.jpg');
-    background-size: cover; /* Cover untuk fill penuh tanpa distort */
+    background-size: 140%; /* Zoom lebih dalam biar orangnya lebih deket */
     background-position: center bottom; /* Align ke bawah */
     background-repeat: no-repeat;
     z-index: 0;
